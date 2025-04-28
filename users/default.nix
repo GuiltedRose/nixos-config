@@ -1,9 +1,8 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   imports = builtins.map (file: ./. + "/${file}") (
-    builtins.filter (file: builtins.match ".*\\.nix$" file != null)
-      (builtins.attrNames (builtins.readDir ./.))
+    builtins.filter (file:
+      builtins.match ".*\\.nix$" file != null && file != "default.nix"
+    ) (builtins.attrNames (builtins.readDir ./.))
   );
 }
 
