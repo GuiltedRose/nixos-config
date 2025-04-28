@@ -3,8 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
-let user = "zelda";
-in
 {
   # Allow unfree packages:
   nixpkgs.config.allowUnfree = true;
@@ -41,8 +39,8 @@ in
 
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
  
   hardware.opentabletdriver.enable = true;  
 
@@ -76,38 +74,6 @@ in
   programs.steam = {
     enable = true;
   };
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-   users.users.${user}={
-     isNormalUser = true;
-     extraGroups = [ "wheel" "audio" "rtkit" ];
-     shell = pkgs.bash;
-     packages = with pkgs; [
-        discord
-        wget
-        vim
-        firefox
-        chromium
-        vscodium
-        kdenlive
-        krita
-        obs-studio
-        git
-        python3
-        cmake
-        gcc
-        ninja
-        pokemmo-installer
-        prismlauncher
-        jdk23
-	audacity
-        zip
-        unzip
-        plasma5Packages.kdeconnect-kde
-        qjackctl
-        rtaudio
-        wineasio
-     ];
-   };
 
   # programs.firefox.enable = true;
 
