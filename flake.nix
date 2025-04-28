@@ -8,7 +8,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:
- let user = "guiltedrose"
+ let user = "guiltedrose";
  in {
     nixosConfigurations.penguin = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
