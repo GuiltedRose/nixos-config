@@ -3,5 +3,4 @@
 flake.lock
 
 # folders to ignore
-users/*
-!users/default.nix
+.vscode/
